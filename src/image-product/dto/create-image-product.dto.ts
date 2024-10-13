@@ -1,9 +1,10 @@
 import {Transform} from "class-transformer";
-import {IsNumber, IsOptional} from "class-validator";
+import {IsArray, IsNumber, IsOptional} from "class-validator";
 
 export class CreateImageProductDto {
+    @IsArray()
     @IsOptional()
-    path: string;
+    path: [];
 
     @Transform(({ value }) => Number(value))
     @IsNumber()

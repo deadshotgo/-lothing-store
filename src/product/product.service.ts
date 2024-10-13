@@ -2,21 +2,29 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import {FilterOperator, paginate, Paginated, PaginateQuery} from "nestjs-paginate";
-import {DeleteResult, Repository, UpdateResult} from "typeorm";
+import {DeleteResult, InsertResult, Repository, UpdateResult} from "typeorm";
 import {Product} from "./entities/product.entity";
 import {InjectRepository} from "@nestjs/typeorm";
-import {SubCategory} from "../sub-category/entities/sub-category.entity";
+import {ImageProductService} from "../image-product/image-product.service";
 
 @Injectable()
 export class ProductService {
   constructor(
       @InjectRepository(Product)
       private readonly productRepository: Repository<Product>,
+      private imageProductService: ImageProductService,
   ) {
   }
 
-  create(createProductDto: CreateProductDto): Promise<Product> {
-    return this.productRepository.save(createProductDto)
+ async create(createProductDto: CreateProductDto): Promise<InsertResult> {
+     const {images, ...data} = createProductDto
+     const product = await this.productRepository.insert(data)
+     const id = product.identifiers[0].id;
+     await this.imageProductService.create({
+       productId: id,
+       path: images
+      })
+   return product;
   }
 
   findAll(query: PaginateQuery): Promise<Paginated<Product>> {
@@ -26,6 +34,8 @@ export class ProductService {
       filterableColumns: {
         id: [FilterOperator.IN],
         title: [FilterOperator.ILIKE],
+        "subCategory.id": [FilterOperator.IN],
+        "subCategory.category.id": [FilterOperator.IN],
         isActive: [FilterOperator.EQ],
         createdAt: [FilterOperator.BTW],
       },

@@ -12,17 +12,9 @@ export class ImageProductService {
       private imageProductRepository: Repository<ImageProduct>,
       private s3Service: S3UploadService,
   ) {}
-  async create(data: CreateImageProductDto, files: any) {
-    if (files.length) {
-      for (const file of files) {
-        const aws = await this.s3Service.uploadFile(
-            file.buffer,
-            file.mimetype,
-            'products',
-        );
-        data.path = aws.Location;
-        await this.imageProductRepository.insert(data);
-      }
+  async create(data: CreateImageProductDto, ) {
+    for (const path of data.path) {
+      await this.imageProductRepository.insert({productId: data.productId, path: path});
     }
   }
 
