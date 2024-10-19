@@ -21,7 +21,7 @@ export class UserEvent {
     @Column({ name: 'fbp', nullable: true })
     fbp: string;
 
-    @Column({ name: 'eventTime', nullable: true })
+    @Column({ name: 'event_time', nullable: true })
     eventTime: string;
 
     @Column({ name: 'city', nullable: true })
