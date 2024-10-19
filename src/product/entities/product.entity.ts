@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import {SubCategory} from "../../sub-category/entities/sub-category.entity";
 import {ImageProduct} from "../../image-product/entities/image-product.entity";
+import {Order} from "../../order/entities/order.entity";
 
 @Entity('product')
 export class Product {
@@ -42,6 +43,9 @@ export class Product {
 
     @OneToMany(() => ImageProduct, (image) => image.product)
     images: ImageProduct[];
+
+    @OneToMany(() => Order, (order) => order.product)
+    order: Order[];
 
     @DeleteDateColumn({ name: 'deleted_at'})
     deletedAt?: Date;

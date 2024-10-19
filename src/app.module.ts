@@ -11,13 +11,16 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ImageProductModule } from './image-product/image-product.module';
 import {ImageProduct} from "./image-product/entities/image-product.entity";
+import { OrderModule } from './order/order.module';
+import {Order} from "./order/entities/order.entity";
 
 const entities = [
     Product,
     Category,
     SubCategory,
     UserEvent,
-    ImageProduct
+    ImageProduct,
+    Order
 ]
 @Module({
   imports: [ProductModule, CategoryModule, SubCategoryModule, UserEventModule,
@@ -37,7 +40,8 @@ const entities = [
       }),
       inject: [ConfigService],
     }),
-    ImageProductModule,],
+    ImageProductModule,
+    OrderModule,],
   controllers: [],
   providers: [],
 })

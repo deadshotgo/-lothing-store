@@ -1,4 +1,5 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Order} from "../../order/entities/order.entity";
 
 @Entity('user_events')
 export class UserEvent {
@@ -31,6 +32,9 @@ export class UserEvent {
 
     @Column({ name: 'zip_code', nullable: true })
     zipCode: string;
+
+    @OneToMany(() => Order, (order) => order.userEvent)
+    order: Order[];
 
     @CreateDateColumn({
         type: 'timestamp',
