@@ -8,6 +8,6 @@ export class CreateOrderDto {
 
     @IsOptional()
     @IsNumber()
-    useEvent: number;
+    userEventId: number;
 
 }
