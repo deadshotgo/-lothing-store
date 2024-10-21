@@ -13,6 +13,8 @@ import { ImageProductModule } from './image-product/image-product.module';
 import {ImageProduct} from "./image-product/entities/image-product.entity";
 import { OrderModule } from './order/order.module';
 import {Order} from "./order/entities/order.entity";
+import { FbAccountModule } from './fb-account/fb-account.module';
+import {FbAccount} from "./fb-account/entities/fb-account.entity";
 
 const entities = [
     Product,
@@ -20,7 +22,8 @@ const entities = [
     SubCategory,
     UserEvent,
     ImageProduct,
-    Order
+    Order,
+    FbAccount
 ]
 @Module({
   imports: [ProductModule, CategoryModule, SubCategoryModule, UserEventModule,
@@ -41,7 +44,8 @@ const entities = [
       inject: [ConfigService],
     }),
     ImageProductModule,
-    OrderModule,],
+    OrderModule,
+    FbAccountModule,],
   controllers: [],
   providers: [],
 })
