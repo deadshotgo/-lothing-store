@@ -15,6 +15,9 @@ export class Order {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({ name: 'customer_link', nullable: true })
+    customerLink: string;
+
     @ManyToOne(() => Product, (product) => product.order)
     @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
     product: Product;

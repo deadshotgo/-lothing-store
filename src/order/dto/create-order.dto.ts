@@ -10,4 +10,8 @@ export class CreateOrderDto {
     @IsNumber()
     userEventId: number;
 
+    @IsOptional()
+    @IsString()
+    customerLink: string;
+
 }
