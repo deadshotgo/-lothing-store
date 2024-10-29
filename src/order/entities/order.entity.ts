@@ -18,6 +18,9 @@ export class Order {
     @Column({ name: 'customer_link', nullable: true })
     customerLink: string;
 
+    @Column({ name: 'in_processed' })
+    inProcessed: boolean;
+
     @ManyToOne(() => Product, (product) => product.order)
     @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
     product: Product;
