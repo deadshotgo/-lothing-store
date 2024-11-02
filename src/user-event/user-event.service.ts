@@ -25,6 +25,7 @@ export class UserEventService {
         id: [FilterOperator.IN],
         isActive: [FilterOperator.EQ],
         createdAt: [FilterOperator.BTW],
+        pixel: [FilterOperator.ILIKE],
       },
     });
   }

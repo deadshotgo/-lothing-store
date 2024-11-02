@@ -9,6 +9,9 @@ export class UserEvent {
     @Column({ name: 'unique_id', unique: true })
     uniqueId: string;
 
+    @Column()
+    pixel: string;
+
     @Column({ name: 'ip_address', nullable: true })
     ipAddress: string;
 
