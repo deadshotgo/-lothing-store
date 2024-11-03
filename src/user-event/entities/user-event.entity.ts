@@ -12,6 +12,9 @@ export class UserEvent {
     @Column()
     pixel: string;
 
+    @Column({nullable: true})
+    phone: string;
+
     @Column({ name: 'ip_address', nullable: true })
     ipAddress: string;
 

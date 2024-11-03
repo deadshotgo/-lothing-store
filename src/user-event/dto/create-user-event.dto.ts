@@ -17,6 +17,10 @@ export class CreateUserEventDto {
     @IsOptional()
     fbclid?: string;
 
+    @IsOptional()
+    @IsString()
+    phone?: string;
+
     @IsString()
     @IsOptional()
     fbp?: string;
