@@ -25,6 +25,7 @@ export class FbAccountService {
       filterableColumns: {
         id: [FilterOperator.IN],
         pixel: [FilterOperator.ILIKE],
+        accountName: [FilterOperator.ILIKE],
         createdAt: [FilterOperator.BTW],
       }
     });

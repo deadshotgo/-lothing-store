@@ -15,7 +15,10 @@ export class FbAccount {
     pixel: string
 
     @Column({ name: 'fb_token' })
-    fbToken: string
+    fbToken: string;
+
+    @Column({ name: 'account_name' })
+    accountName: string
 
     @Column({ name: 'event_name' })
     eventName: string;

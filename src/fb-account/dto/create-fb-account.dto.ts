@@ -11,5 +11,9 @@ export class CreateFbAccountDto {
 
     @IsNotEmpty()
     @IsString()
+    accountName: string;
+
+    @IsNotEmpty()
+    @IsString()
     eventName: string;
 }
