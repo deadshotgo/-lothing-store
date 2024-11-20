@@ -18,4 +18,8 @@ export class CreateOrderDto {
     @IsBoolean()
     inProcessed: boolean;
 
+    @IsOptional()
+    @IsString()
+    status: string;
+
 }

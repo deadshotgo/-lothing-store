@@ -50,4 +50,7 @@ export class Order {
         name: 'updatedat',
     })
     public updatedAt: Date;
+
+    @Column({ name: 'status' })
+    status: string;
 }
